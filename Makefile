@@ -21,6 +21,8 @@ SRCS_FILES := fdf.c
 #	fdf files
 SRCS_FILES += fdf/ft_fdf_init.c
 SRCS_FILES += fdf/ft_fdf_destroy.c
+#	error files
+SRCS_FILES += fdf/ft_fdf_error.c
 #	window files
 SRCS_FILES += fdf/window/ft_window_init.c
 SRCS_FILES += fdf/window/ft_window_destroy.c

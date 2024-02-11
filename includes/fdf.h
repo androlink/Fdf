@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/11 01:03:50 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/11 02:43:02 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@
 # ifndef IMAGE_HEIGHT
 #  define IMAGE_HEIGHT 300
 # endif
+
+typedef enum e_fdf_err
+{
+	nothing_append,
+	no_file,
+	bad_file_format,
+	bad_file,
+	object_parsing,
+	init_fail,
+	
+}	t_fdf_err;
 
 typedef struct s_window
 {
@@ -60,7 +71,12 @@ typedef struct s_fdf
 //fdf function
 int			ft_fdf_init(t_fdf *fdf);
 void		ft_fdf_destroy(t_fdf *fdf);
-int			ft_fdf_exit(t_fdf *fdf);
+int			ft_fdf_stop(t_fdf *fdf);
+int			ft_fdf_exit(t_fdf_err err_code, t_fdf *fdf);
+
+//error function
+int			ft_print_error(t_fdf_err err_code);
+const char	*ft_strerr(t_fdf_err err_code);
 
 //window function
 int			window_init(t_window *win);
