@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_init.c                                      :+:      :+:    :+:   */
+/*   ft_arr_append.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 01:30:32 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/11 01:31:39 by gcros            ###   ########.fr       */
+/*   Created: 2024/02/08 02:57:26 by gcros             #+#    #+#             */
+/*   Updated: 2024/02/08 02:59:48 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "mlx.h"
-#include "stddef.h"
-#include <stdlib.h>
+#include "arr.h"
 
-int	ft_fdf_init(t_fdf *fdf)
+int	ft_arr_append(t_array *arr, void *elem)
 {
-	ft_bzero(fdf, sizeof(t_fdf));
-	if (!ft_projection_init(&fdf->projection))
-		return (0);
-	if (!window_init(&fdf->window))
-		return(0);
-	event_key(fdf);
+	if (arr->size == arr->capacity)
+		if (ft_arr_resize(arr, arr->size + 20) == 0)
+			return (0);
+	arr->data[arr->size] = elem;
+	arr->size++;
 	return (1);
 }

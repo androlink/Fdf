@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 18:36:19 by androlink         #+#    #+#             */
-/*   Updated: 2024/01/21 19:09:42 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/08 03:00:02 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	*ft_arr_pop(t_array *array);
 int		ft_arr_unshift(t_array *array, void *elem);
 void	*ft_arr_shift(t_array *array);
 t_array	*ft_arr_map(t_array *array, void *(*f)(void *), void (*del)(void *));
+int		ft_arr_append(t_array *arr, void *elem);
 
 #endif

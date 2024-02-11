@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:10:09 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/07 05:02:09 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/11 01:32:54 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int ac, char **av)
 	(void) av;
 	if (!ft_fdf_init(&fdf))
 		return (-1);
+	
 	mlx_loop(fdf.window.mlx_ptr);
 	ft_fdf_destroy(&fdf);
 	return (0);

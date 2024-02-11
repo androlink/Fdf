@@ -97,7 +97,8 @@ ARRFILES		=	ft_arr_new.c		\
 					ft_arr_shift.c		\
 					ft_arr_unshift.c	\
 					ft_arr_map.c		\
-					ft_arr_pop.c
+					ft_arr_pop.c		\
+					ft_arr_append.c
 
 SFILES	=	${addprefix $(LSTDIR)/, $(LSTFILES)}		\
 			${addprefix $(CHARDIR)/, $(CHARFILES)}		\
