@@ -6,13 +6,14 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:10:09 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/11 02:44:44 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/11 05:47:48 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fdf.h"
 #include <stdlib.h>
+#include "ft_printf.h"
 
 int	main(int ac, char **av)
 {
@@ -23,7 +24,6 @@ int	main(int ac, char **av)
 		ft_fdf_exit(no_file, NULL);
 	if (!ft_fdf_init(&fdf))
 		ft_fdf_exit(init_fail, &fdf);
-	
 	mlx_loop(fdf.window.mlx_ptr);
 	ft_fdf_exit(nothing_append , &fdf);
 }

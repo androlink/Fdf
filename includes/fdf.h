@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/11 02:43:02 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/11 05:47:26 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_fdf
 {
 	t_window		window;
 	t_projection	projection;
+	char			*file_to_load;
 	t_object		object;
 }	t_fdf;
 
