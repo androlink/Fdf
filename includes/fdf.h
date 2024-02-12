@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/11 05:47:26 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/12 14:39:53 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,27 @@ typedef enum e_fdf_err
 {
 	nothing_append,
 	no_file,
-	bad_file_format,
+	bad_file_ext,
 	bad_file,
 	object_parsing,
 	init_fail,
 	
 }	t_fdf_err;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
 typedef struct s_window
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	
 }	t_window;
 
 typedef struct s_object
@@ -65,7 +75,7 @@ typedef struct s_fdf
 {
 	t_window		window;
 	t_projection	projection;
-	char			*file_to_load;
+	char			**files_to_load;
 	t_object		object;
 }	t_fdf;
 
@@ -85,6 +95,8 @@ void		window_destroy(t_window *win);
 
 //projection function
 int			ft_projection_init(t_projection *projection);
+//load function
+int	ft_load_file(t_fdf *fdf, char *file);
 
 //object function
 int	ft_load_object(t_object *obj, t_array *to_parse);

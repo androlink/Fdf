@@ -9,9 +9,9 @@ MLXFTFLAGS = -L $(MLXDIR)/ -l $(MLXNAME) $(MLXINCLUDE) -lXext -lX11
 LIB_PATH += $(MLXPATH)
 LIB_INCLUDE += $(MLXINCLUDE)
 LIB_FLAGS += $(MLXFTFLAGS)
+LIB_DIR += $(MLXDIR)
 
-$(MLXPATH)	: force
+$(MLXPATH) :
 	$(MAKE) -C $(MLXDIR)
-
 fclean ::
 	$(MAKE) clean -C $(MLXDIR)
