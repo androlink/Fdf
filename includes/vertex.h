@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 02:46:37 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/11 01:07:48 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/13 23:51:28 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ typedef struct s_vec2
 
 typedef struct s_point
 {
-	t_vec3			world_point;
+	t_vec3			coord;
 	unsigned char	color[4];
 }	t_point;
 
 typedef struct s_face
 {
-	t_vector	points;
+	t_array	points;
 }	t_face;
 
 #endif

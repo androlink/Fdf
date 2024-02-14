@@ -39,13 +39,14 @@ SRCS_FILES += vector/ft_vec_new.c
 SRCS_FILES += vector/ft_vec_resize.c
 SRCS_FILES += vector/ft_vec_get.c
 SRCS_FILES += vector/ft_vec_destroy.c
-
 #load files
 SRCS_FILES += fdf/load/ft_load_file.c
+SRCS_FILES += fdf/load/ft_load_object.c
+SRCS_FILES += fdf/load/parser/ft_fdf_parser.c
 
 SRCS = ${addprefix $(SDIR)/, $(SRCS_FILES)}
 
-OBJS = $(SRCS_FILES:%.c=$(DDIR)/%.o)
+OBJS = $(SRCS_FILES:%.c=$(BDIR)/%.o)
 
 DEPS = $(SRCS_FILES:%.c=$(DDIR)/%.d)
 
@@ -75,5 +76,6 @@ re		:	fclean
 fclean	::	clean
 	$(RMF) $(NAME)
 
+force :
 
 .PHONY: clean re fclean force 

@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 00:53:39 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/11 01:06:06 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/13 17:33:36 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ int	window_init(t_window *win)
 	win->win_ptr = mlx_new_window(win->mlx_ptr,
 			SCREEN_WIDTH, SCREEN_HEIGHT, "fdf");
 	if (win->win_ptr == NULL)
+		return (0);
+	win->img_ptr = mlx_new_image(win->mlx_ptr, IMAGE_WIDTH, IMAGE_HEIGHT);
+	if (win->img_ptr == NULL)
 		return (0);
 	return (1);
 }

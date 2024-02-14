@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/12 14:39:53 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/14 00:39:11 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "arr.h"
 # include "vertex.h"
+# include <string.h>
+# include <errno.h>
 
 # ifndef SCREEN_WIDTH
 #  define SCREEN_WIDTH 400
@@ -32,6 +34,12 @@
 #  define IMAGE_HEIGHT 300
 # endif
 
+typedef enum e_fdf_ext
+{
+	no_ext,
+	fdf_ext,
+}	t_fdf_ext;
+
 typedef enum e_fdf_err
 {
 	nothing_append,
@@ -40,7 +48,8 @@ typedef enum e_fdf_err
 	bad_file,
 	object_parsing,
 	init_fail,
-	
+	no_parsing_func,
+	look_errno,
 }	t_fdf_err;
 
 typedef struct s_img
@@ -56,12 +65,12 @@ typedef struct s_window
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	
+	void	*img_ptr;
 }	t_window;
 
 typedef struct s_object
 {
-	t_vector	*faces;
+	t_vector	faces;
 }	t_object;
 
 typedef struct s_projection
@@ -96,10 +105,11 @@ void		window_destroy(t_window *win);
 //projection function
 int			ft_projection_init(t_projection *projection);
 //load function
-int	ft_load_file(t_fdf *fdf, char *file);
+int			ft_load_file(t_fdf *fdf, char *file);
+t_fdf_err	ft_fdf_parser(t_object *, t_array *);
 
 //object function
-int	ft_load_object(t_object *obj, t_array *to_parse);
+t_fdf_err	ft_load_object(t_object *obj, t_array *to_parse, char *ext);
 
 //event function
 void		event_key(t_fdf *fdf);

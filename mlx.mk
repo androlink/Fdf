@@ -11,7 +11,8 @@ LIB_INCLUDE += $(MLXINCLUDE)
 LIB_FLAGS += $(MLXFTFLAGS)
 LIB_DIR += $(MLXDIR)
 
-$(MLXPATH) :
-	$(MAKE) -C $(MLXDIR)
 fclean ::
 	$(MAKE) clean -C $(MLXDIR)
+
+$(MLXPATH) : force 
+	$(MAKE) -C $(MLXDIR)

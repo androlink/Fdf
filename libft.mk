@@ -14,7 +14,5 @@ LIB_DIR += $(LIBFTDIR)
 fclean ::
 	$(MAKE) fclean -C $(LIBFTDIR)
 
-$(LIBFTPATH) :
+$(LIBFTPATH) : force
 	$(MAKE) -C $(LIBFTDIR)
-
-.PHONY: 
