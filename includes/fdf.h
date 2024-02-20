@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 03:23:01 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/20 23:27:55 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@
 # include <errno.h>
 
 # ifndef SCREEN_WIDTH
-#  define SCREEN_WIDTH 400
+#  define SCREEN_WIDTH 1080
 # endif
 
 # ifndef SCREEN_HEIGHT
-#  define SCREEN_HEIGHT 300
+#  define SCREEN_HEIGHT 800
 # endif
 
 # ifndef IMAGE_WIDTH
-#  define IMAGE_WIDTH 400
+#  define IMAGE_WIDTH 1080
 # endif
 
 # ifndef IMAGE_HEIGHT
-#  define IMAGE_HEIGHT 300
+#  define IMAGE_HEIGHT 800
 # endif
 
 typedef enum e_fdf_ext
@@ -80,6 +80,7 @@ typedef struct s_projection
 	t_vec3	rot_vec;
 	t_vec3	trans_vec;
 	t_vec3	scale_vec;
+	t_vec2	origine_vec;
 	t_mat4	mat_proj;
 }	t_projection;
 
@@ -142,5 +143,7 @@ t_mat4	get_trans_mat(t_vec3 *trans_vec);
 t_mat4	get_ident_mat(void);
 t_mat4	ft_mat4_mul(t_mat4 m1, t_mat4 m2);
 t_vec3	ft_mat4_x_vec3(t_mat4 m1, t_vec3 v1);
+t_mat4	get_iso_proj();
+t_mat4	get_pers_proj();
 
 #endif

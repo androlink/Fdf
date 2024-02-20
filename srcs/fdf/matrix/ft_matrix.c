@@ -6,35 +6,13 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:46:59 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 03:50:05 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/20 23:05:43 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 #include <stdio.h>
-
-/*************************************************************************************
-t_mat4	get_rot_mat(t_vec3 *rot_vec)
-{
-	t_mat4	rot_mat;
-
-	ft_bzero(&rot_mat, sizeof(t_mat4));
-	rot_mat.mat[0][0] = cos(rot_vec->z) * cos(rot_vec->y);
-	rot_mat.mat[0][1] = sin(rot_vec->z) * cos(rot_vec->y);
-	rot_mat.mat[0][2] = -sin(rot_vec->y);
-	rot_mat.mat[1][0] = sin(rot_vec->z) * sin(rot_vec->y) * \
-	sin(rot_vec->x) - sin(rot_vec->z) * cos(rot_vec->x);
-	rot_mat.mat[1][1] = sin(rot_vec->z) * sin(rot_vec->y) * \
-	sin(rot_vec->x) - cos(rot_vec->z) * cos(rot_vec->x);
-	rot_mat.mat[1][2] = cos(rot_vec->y) * sin(rot_vec->x);
-	rot_mat.mat[2][0] = cos(rot_vec->z) * sin(rot_vec->y) * \
-	cos(rot_vec->x) - sin(rot_vec->z) * sin(rot_vec->x);
-	rot_mat.mat[2][1] = sin(rot_vec->z) * sin(rot_vec->y) * \
-	cos(rot_vec->x) - cos(rot_vec->z) * sin(rot_vec->x);
-	rot_mat.mat[2][2] = cos(rot_vec->y) * cos(rot_vec->x);
-	return (rot_mat);
-}*/
 
 t_mat4	get_rot_mat(t_vec3 *rot_vec)
 {
@@ -54,14 +32,19 @@ t_mat4	get_rot_mat(t_vec3 *rot_vec)
 	rot_mat.mat[2][0] = -sin(rot_vec->y);
 	rot_mat.mat[2][1] = cos(rot_vec->y) * sin(rot_vec->x);
 	rot_mat.mat[2][2] = cos(rot_vec->y) * cos(rot_vec->x);
+	rot_mat.mat[3][3] = 1;
 	return (rot_mat);
 }
+
+// 1 0 0 X
+// 0 1 0 Y
+// 0 0 1 Z
+// 0 0 0 1
 
 t_mat4	get_trans_mat(t_vec3 *trans_vec)
 {
 	t_mat4	trans_mat;
 
-	printf("trans : %f, %f, %f\n", trans_vec->x, trans_vec->y, trans_vec->z);
 	ft_bzero(&trans_mat, sizeof(t_mat4));
 	trans_mat.mat[0][0] = 1;
 	trans_mat.mat[1][1] = 1;

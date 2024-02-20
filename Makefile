@@ -54,6 +54,7 @@ SRCS_FILES += fdf/draw/ft_point.c
 #	matrix files
 SRCS_FILES += fdf/matrix/ft_matrix_calc.c
 SRCS_FILES += fdf/matrix/ft_matrix.c
+SRCS_FILES += fdf/matrix/projection_mat.c
 
 SRCS = ${addprefix $(SDIR)/, $(SRCS_FILES)}
 
@@ -70,6 +71,7 @@ all : $(NAME)
 
 include mlx.mk
 include libft.mk
+-include $(DEPS)
 LIB_FLAGS += -lm
 
 $(NAME) : $(OBJS) $(LIB_PATH)

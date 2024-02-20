@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 01:56:43 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 03:45:50 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/20 23:21:19 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,7 @@ int	ft_projection_init(t_projection *projection)
 	projection->rot_vec = ft_get_default_rot();
 	projection->trans_vec = ft_get_default_trans();
 	projection->scale_vec = ft_get_default_scale();
-	projection->mat_proj = (t_mat4){{
-		{1, 0, 0, 0},
-		{0, 1, 0, 0},
-		{0, 0, 1, 0},
-		{0, 0, 0, 0}
-	}};
+	projection->mat_proj = get_iso_proj();
 	return (1);
 }
 
@@ -31,9 +26,9 @@ t_vec3	ft_get_default_rot(void)
 {
 	t_vec3	rot;
 
-	rot.x = 0;
-	rot.y = 0;
-	rot.z = 3.14f / 4;
+	rot.x = 0.523599;
+	rot.z = 0.523599;
+	rot.y = 0.785398;
 	return (rot);
 	
 }
@@ -42,9 +37,9 @@ t_vec3	ft_get_default_trans(void)
 {
 	t_vec3	trans;
 
-	trans.x = 100;
-	trans.y = 100;
-	trans.z = 100;
+	trans.x = IMAGE_WIDTH / 2;
+	trans.y = IMAGE_HEIGHT / 2;
+	trans.z = 0;
 	return (trans);
 }
 
@@ -54,6 +49,6 @@ t_vec3	ft_get_default_scale(void)
 
 	scale.x = 10;
 	scale.y = 10;
-	scale.z = 10;
+	scale.z = 2;
 	return (scale);
 }

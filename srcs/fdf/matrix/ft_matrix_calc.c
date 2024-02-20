@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 01:13:16 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 03:42:47 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/20 20:53:30 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_mat4	ft_mat4_mul(t_mat4 m1, t_mat4 m2)
 {
 	int		i;
 	int		j;
-	int		k;
 	t_mat4	m3;
 
 	ft_bzero(&m3, sizeof(t_mat4));
@@ -26,12 +25,10 @@ t_mat4	ft_mat4_mul(t_mat4 m1, t_mat4 m2)
 		i = 0;
 		while (i < 4)
 		{
-			k = 0;
-			while (k < 4)
-			{
-				m3.mat[j][i] += m1.mat[j][k] * m2.mat[k][i];
-				k++;
-			}
+			m3.mat[j][i] = m1.mat[j][0] * m2.mat[0][i];
+			m3.mat[j][i] += m1.mat[j][1] * m2.mat[1][i];
+			m3.mat[j][i] += m1.mat[j][2] * m2.mat[2][i];
+			m3.mat[j][i] += m1.mat[j][3] * m2.mat[3][i];
 			i++;
 		}
 		j++;

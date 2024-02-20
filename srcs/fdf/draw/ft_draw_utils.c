@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:21:13 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 03:13:24 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/21 00:00:41 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_point	apply_proj(t_point point, t_mat4 *model_mat)
 void ft_draw_pixel(int x, int y, int color, t_img *img)
 {
 	char	*p;
-	if (x < 0 || x > IMAGE_WIDTH || y < 0 || y > IMAGE_HEIGHT)
+	if (x < 0 || x >= IMAGE_WIDTH || y < 0 || y >= IMAGE_HEIGHT)
 		return ;
 	p = img->addr + (y * img->size_line + x * (img->bits_per_pixel / 8));
 	*(unsigned int*)p = color;
@@ -35,18 +35,18 @@ void ft_draw_pixel(int x, int y, int color, t_img *img)
 int	get_proj_points(t_object *obj, t_object *proj_obj, t_projection *proj)
 {
 	size_t	i;
-	t_mat4	model_mat;
+	t_mat4	mvp;
 	
-	proj_obj->points = malloc(obj->x * obj->y * sizeof(t_point));
-	if (proj_obj ->points == NULL)
+	proj_obj->points = ft_calloc(obj->x * obj->y, sizeof(t_point));
+	if (proj_obj->points == NULL)
 		return (0);
 	proj_obj->x = obj->x;
 	proj_obj->y = obj->y;
-	model_mat = get_model_mat(proj);
+	mvp = ft_mat4_mul(proj->mat_proj, get_model_mat(proj));
 	i = 0;
 	while (i < obj->y * obj->x)
 	{
-		proj_obj->points[i] = apply_proj(obj->points[i], &model_mat);
+		proj_obj->points[i] = apply_proj(obj->points[i], &mvp);
 		i++;
 	}
 	return (1);
@@ -71,13 +71,12 @@ int	ft_draw(t_object *obj, t_projection *proj, t_img *img)
 	t_object	proj_obj;
 	size_t		i;
 	
-	
+	ft_bzero(img->addr,img->size_line * IMAGE_HEIGHT);
 	if (get_proj_points(obj, &proj_obj, proj) == 0)
 		return (0);
 	i = 0;
 	while (i < proj_obj.x * proj_obj.y)
 	{
-		printf("point %ld : %f, %f, %f\n", i, proj_obj.points[i].coord.x, proj_obj.points[i].coord.y, proj_obj.points[i].coord.z);
 		ft_draw_pixel(proj_obj.points[i].coord.x, proj_obj.points[i].coord.y, 0XFFFFFF, img);
 		i++;
 	}
