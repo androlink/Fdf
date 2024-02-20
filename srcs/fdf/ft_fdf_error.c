@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 02:21:52 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/14 04:32:54 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/19 18:59:02 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 int	ft_print_error(t_fdf_err err_code)
 {
 	const char *str_err = ft_strerr(err_code);
-
 	if (str_err == NULL)
 		return (0);
 	ft_putstr_fd((char *)str_err, 2);

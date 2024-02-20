@@ -1,6 +1,6 @@
 NAME = fdf
 
-CC = cc
+CC = gcc
 RMF = rm -f
 
 DEBUG_FLAGS := -g3
@@ -39,10 +39,21 @@ SRCS_FILES += vector/ft_vec_new.c
 SRCS_FILES += vector/ft_vec_resize.c
 SRCS_FILES += vector/ft_vec_get.c
 SRCS_FILES += vector/ft_vec_destroy.c
-#load files
+#	load files
 SRCS_FILES += fdf/load/ft_load_file.c
 SRCS_FILES += fdf/load/ft_load_object.c
 SRCS_FILES += fdf/load/parser/ft_fdf_parser.c
+SRCS_FILES += fdf/load/parser/ft_fdf_parser_ext.c
+#	utils files
+SRCS_FILES += utils/ft_strtok.c
+#	draw files
+SRCS_FILES += fdf/draw/ft_draw_utils.c
+SRCS_FILES += fdf/draw/ft_draw_line.c
+SRCS_FILES += fdf/draw/ft_line.c
+SRCS_FILES += fdf/draw/ft_point.c
+#	matrix files
+SRCS_FILES += fdf/matrix/ft_matrix_calc.c
+SRCS_FILES += fdf/matrix/ft_matrix.c
 
 SRCS = ${addprefix $(SDIR)/, $(SRCS_FILES)}
 
@@ -59,6 +70,7 @@ all : $(NAME)
 
 include mlx.mk
 include libft.mk
+LIB_FLAGS += -lm
 
 $(NAME) : $(OBJS) $(LIB_PATH)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) -I $(HDIR)/ $(LIB_FLAGS)

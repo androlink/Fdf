@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 01:12:12 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/13 17:50:25 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/19 22:02:12 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 #include "get_next_line.h"
 #include "ft_printf.h"
 
-static int		check_ext(char *file);
-static void	error_catch(t_fdf *fdf, t_fdf_err err_code, t_array *arr);
-static int		get_file(t_array *arr, int fd);
+static int				check_ext(char *file);
+static void				error_catch(t_fdf *fdf, t_fdf_err err_code, t_array *arr);
+static t_fdf_err		get_file(t_array *arr, int fd);
 
 int	ft_load_file(t_fdf *fdf, char *file)
 {
@@ -27,6 +27,7 @@ int	ft_load_file(t_fdf *fdf, char *file)
 	int	fd;
 	
 	arr = NULL;
+	ft_bzero(&obj, sizeof(t_object));
 	fd = -1;
 	if (check_ext(file) == 0)
 		error_catch(fdf, bad_file_ext, arr);
@@ -34,20 +35,19 @@ int	ft_load_file(t_fdf *fdf, char *file)
 	if (arr == NULL)
 		error_catch(fdf, init_fail, arr);
 	fd = open(file, O_RDONLY);
-	if (get_file(arr, fd) == 0)
-		error_catch(fdf, bad_file, arr);
+	error_catch(fdf, get_file(arr, fd), arr);
 	error_catch(fdf, ft_load_object(&obj, arr, ft_strrchr(file, '.')), arr);
 	fdf->object = obj;
 	ft_arr_free(&arr, free);
 	return (1);
 }
 
-static int get_file(t_array *arr, int fd)
+static t_fdf_err get_file(t_array *arr, int fd)
 {
 	char *line;
 	
 	if (fd == -1)
-		return (0);
+		return (bad_file);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -55,7 +55,7 @@ static int get_file(t_array *arr, int fd)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	return (1);
+	return (nothing_append);
 }
 
 static void	error_catch(t_fdf *fdf, t_fdf_err err_code, t_array *arr)
@@ -75,7 +75,6 @@ static int	check_ext(char *file)
 	ext = ft_strrchr(file, '.');
 	if (ext == NULL)
 		return (0);
-	ft_printf("%s\n", file);
 	if (ft_strncmp(ext, ".fdf", 5) == 0)
 		return (1);
 	return (0);

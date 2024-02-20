@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 00:52:14 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/14 04:37:06 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/19 18:24:35 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@ static t_fdf_err (*get_parser(char *ext))(t_object *, t_array *);
 t_fdf_err	ft_load_object(t_object *obj, t_array *to_parse, char *ext)
 {
 	t_fdf_err (*parser_func)(t_object *, t_array *);
+	t_fdf_err	err;
+
+
 	parser_func = get_parser(ext);
 	if (parser_func == NULL)
+	{
 		return (no_parsing_func);
-	parser_func(obj, to_parse);
-	return (nothing_append);
+	}
+	err = parser_func(obj, to_parse);
+	return (err);
 }
-
 
 static t_fdf_err (*get_parser(char *ext))(t_object *, t_array *)
 {

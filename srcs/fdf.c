@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:10:09 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/12 14:40:14 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/20 02:32:07 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@ int	main(int ac, char **av)
 
 	(void) av;
 	if (ac == 1)
+	{
 		ft_fdf_exit(no_file, NULL);
-	if (!ft_fdf_init(&fdf))
+	}
+	if (!ft_fdf_init(&fdf))//164 alloc
 		ft_fdf_exit(init_fail, &fdf);
 	fdf.files_to_load = av + 1;
 	ft_load_file(&fdf, av[1]);
+	ft_draw(&fdf.object, &fdf.projection, &fdf.window.img);
+	ft_refresh(&fdf);
 	mlx_loop(fdf.window.mlx_ptr);
 	ft_fdf_exit(nothing_append , &fdf);
 }
