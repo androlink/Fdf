@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 01:56:43 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 23:21:19 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:34:52 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ t_vec3	ft_get_default_scale(void)
 
 	scale.x = 10;
 	scale.y = 10;
-	scale.z = 2;
+	scale.z = 5;
 	return (scale);
 }

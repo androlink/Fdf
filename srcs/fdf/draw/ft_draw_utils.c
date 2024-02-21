@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:21:13 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/21 00:00:41 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:34:16 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ int	get_proj_points(t_object *obj, t_object *proj_obj, t_projection *proj)
 		return (0);
 	proj_obj->x = obj->x;
 	proj_obj->y = obj->y;
-	mvp = ft_mat4_mul(proj->mat_proj, get_model_mat(proj));
+	mvp = get_model_mat(proj);
+	mvp = ft_mat4_mul(mvp, proj->mat_proj);
 	i = 0;
 	while (i < obj->y * obj->x)
 	{

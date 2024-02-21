@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:44:30 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/21 00:20:42 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/21 19:34:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,19 @@ t_mat4	get_iso_proj()
 t_mat4	get_pers_proj()
 {
 	t_mat4	mat;
-	float	far;
-	float	near;
+	const float	far = 1000.;
+	const float	near = .1;
+	const float	fov = 120.;
+	const float	ratio = (float)IMAGE_HEIGHT / (float)IMAGE_WIDTH;
+	const float fov_rad = 1. / tan(fov * .5 / 180. * FDF_PI);
+	const float z_far_z_near = far / (far - near);
 
-	far = 100.f;
-	near = .1f;
 	ft_bzero(&mat, sizeof(t_mat4));
-	mat.mat[0][0] = 1 / tan(120 / 2 * 3.14 / 180);
-	mat.mat[1][1] = 1 / tan(90 / 2 * 3.14 / 180);
-	mat.mat[2][2] = -(far + near) / (far - near);
-	mat.mat[3][2] = -2 * far * near / (far - near);
-	mat.mat[2][3] = -1;
+	mat.mat[0][0] = ratio * fov_rad;
+	mat.mat[1][1] = fov_rad;
+	mat.mat[2][2] = z_far_z_near;
+	mat.mat[3][2] = (-z_far_z_near) * near;
+	mat.mat[2][3] = 1.0;
+	mat.mat[3][3] = 1;
 	return (mat);
 }

@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 23:27:55 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/21 18:22:27 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # ifndef IMAGE_HEIGHT
 #  define IMAGE_HEIGHT 800
 # endif
+
+# define FDF_PI 3.14149f
 
 typedef enum e_fdf_ext
 {
