@@ -30,7 +30,8 @@ SRCS_FILES += fdf/window/ft_window_destroy.c
 SRCS_FILES += fdf/key/ft_key_handler.c
 SRCS_FILES += fdf/key/ft_key_init.c
 #	projection files
-SRCS_FILES += fdf/projection/ft_projection_init.c
+SRCS_FILES += fdf/projection/ft_model_init.c
+SRCS_FILES += fdf/projection/view_init.c
 #	vector files
 SRCS_FILES += vector/ft_vec_append.c
 SRCS_FILES += vector/ft_vec_clear.c
@@ -48,12 +49,14 @@ SRCS_FILES += fdf/load/parser/ft_fdf_parser_ext.c
 SRCS_FILES += utils/ft_strtok.c
 #	draw files
 SRCS_FILES += fdf/draw/ft_draw_utils.c
+SRCS_FILES += fdf/draw/draw.c
+SRCS_FILES += fdf/draw/paint.c
 SRCS_FILES += fdf/draw/ft_draw_line.c
-SRCS_FILES += fdf/draw/ft_line.c
-SRCS_FILES += fdf/draw/ft_point.c
+SRCS_FILES += fdf/loop.c
 #	matrix files
 SRCS_FILES += fdf/matrix/ft_matrix_calc.c
-SRCS_FILES += fdf/matrix/ft_matrix.c
+SRCS_FILES += fdf/matrix/get_model.c
+SRCS_FILES += fdf/matrix/get_view.c
 SRCS_FILES += fdf/matrix/projection_mat.c
 
 SRCS = ${addprefix $(SDIR)/, $(SRCS_FILES)}

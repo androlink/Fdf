@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrix.c                                        :+:      :+:    :+:   */
+/*   get_model.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:46:59 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/21 19:34:03 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/22 17:52:34 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_mat4	get_rot_mat(t_vec3 *rot_vec)
 	rot_mat.mat[2][0] = -sin(rot_vec->y);
 	rot_mat.mat[2][1] = cos(rot_vec->y) * sin(rot_vec->x);
 	rot_mat.mat[2][2] = cos(rot_vec->y) * cos(rot_vec->x);
-	rot_mat.mat[3][3] = 1;
+	rot_mat.mat[3][3] = 0;
 	return (rot_mat);
 }
 
@@ -40,7 +40,6 @@ t_mat4	get_rot_mat(t_vec3 *rot_vec)
 // 0 1 0 Y
 // 0 0 1 Z
 // 0 0 0 1
-
 t_mat4	get_trans_mat(t_vec3 *trans_vec)
 {
 	t_mat4	trans_mat;
@@ -56,6 +55,10 @@ t_mat4	get_trans_mat(t_vec3 *trans_vec)
 	return (trans_mat);
 }
 
+// X 0 0 0
+// 0 Y 0 0
+// 0 0 Z 0
+// 0 0 0 1
 t_mat4	get_scale_mat(t_vec3 *scale_vec)
 {
 	t_mat4	scale_mat;
@@ -68,6 +71,10 @@ t_mat4	get_scale_mat(t_vec3 *scale_vec)
 	return (scale_mat);
 }
 
+// 1 0 0 0
+// 0 1 0 0
+// 0 0 1 0
+// 0 0 0 1
 t_mat4	get_ident_mat(void)
 {
 	t_mat4	ident_mat;
@@ -87,11 +94,11 @@ t_mat4	get_model_mat(t_projection *proj)
 	t_mat4	scale_mat;
 	t_mat4	model_mat;
 
-	rot_mat = get_rot_mat(&proj->rot_vec);
-	trans_mat = get_trans_mat(&proj->trans_vec);
-	scale_mat = get_scale_mat(&proj->scale_vec);
+	ft_bzero(&model_mat, sizeof(t_mat4));
+	rot_mat = get_rot_mat(&proj->rot_model);
+	trans_mat = get_trans_mat(&proj->trans_model);
+	scale_mat = get_scale_mat(&proj->scale_model);
 	model_mat = get_ident_mat();
-	
 	model_mat = ft_mat4_mul(scale_mat, model_mat);
 	model_mat = ft_mat4_mul(rot_mat, model_mat);
 	model_mat = ft_mat4_mul(trans_mat, model_mat);

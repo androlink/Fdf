@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_init.c                                      :+:      :+:    :+:   */
+/*   get_view.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/02 01:30:32 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/22 18:03:46 by gcros            ###   ########.fr       */
+/*   Created: 2024/02/22 17:49:53 by gcros             #+#    #+#             */
+/*   Updated: 2024/02/23 00:32:26 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "mlx.h"
-#include "stddef.h"
-#include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
 
-int	ft_fdf_init(t_fdf *fdf)
+t_mat4	get_view_mat(t_projection *proj)
 {
-	ft_bzero(fdf, sizeof(t_fdf));
-	ft_model_init(&fdf->projection);
-	view_init(&fdf->projection);
-	if (!window_init(&fdf->window))
-		return(0);
-	event_key(fdf);
-	return (1);
+	t_mat4	view_mat;
+
+	ft_bzero(&view_mat, sizeof(t_mat4));
+	view_mat = get_ident_mat();
+	view_mat = ft_mat4_mul(get_rot_mat(&proj->rot_view), view_mat);
+	view_mat = ft_mat4_mul(get_trans_mat(&proj->trans_view), view_mat);
+	return (view_mat);
 }

@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/21 18:22:27 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/22 18:15:38 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #  define IMAGE_HEIGHT 800
 # endif
 
-# define FDF_PI 3.14149f
+# define FDF_PI 3.1416f
 
 typedef enum e_fdf_ext
 {
@@ -79,12 +79,25 @@ typedef struct s_object
 
 typedef struct s_projection
 {
-	t_vec3	rot_vec;
-	t_vec3	trans_vec;
-	t_vec3	scale_vec;
-	t_vec2	origine_vec;
+	t_vec3	rot_model;
+	t_vec3	trans_model;
+	t_vec3	scale_model;
 	t_mat4	mat_proj;
+	t_vec3	rot_view;
+	t_vec3	trans_view;
 }	t_projection;
+
+typedef struct s_control
+{
+	t_vec2	rotX_model;
+	t_vec2	rotY_model;
+	t_vec2	rotZ_model;
+	t_vec2	zoom_model;
+	t_vec2	transX_view;
+	t_vec2	transY_view;
+	t_vec2	transZ_view;
+	t_vec2	scaleZ;
+}	t_control;
 
 typedef struct s_fdf
 {
@@ -92,6 +105,8 @@ typedef struct s_fdf
 	t_projection	projection;
 	char			**files_to_load;
 	t_object		object;
+	t_control		control;
+	int				draw_type;
 }	t_fdf;
 
 //fdf function
@@ -109,7 +124,8 @@ int			window_init(t_window *win);
 void		window_destroy(t_window *win);
 
 //projection function
-int			ft_projection_init(t_projection *projection);
+int			ft_model_init(t_projection *projection);
+int			view_init(t_projection *projection);
 t_vec3		ft_get_default_trans(void);
 t_vec3		ft_get_default_scale(void);
 t_vec3		ft_get_default_rot(void);
@@ -126,11 +142,18 @@ t_fdf_err	get_obj(t_object *obj, t_vector *points);
 //event function
 void		event_key(t_fdf *fdf);
 int			ft_key_handler(int key, void *param);
+int			key_pressed(int key, t_fdf *fdf);
+int			key_released(int key, t_fdf *fdf);
+void		switch_proj(int key, void *param);
+int			loop(void *fdf);
 
 //draw function
-void ft_refresh(t_fdf *fdf);
-void ft_draw_pixel(int x, int y, int color, t_img *img);
-void ft_line(t_point *p1, t_point *p2, t_projection *proj, t_img *img);
+void	ft_refresh(t_fdf *fdf);
+void	paint_pixel(t_point *p, t_img *img);
+void	paint_line(t_point *p1, t_point *p2, t_img *img);
+int		paint(t_object *obj, t_img *img, int draw_type);
+int		draw_pixel(t_object *obj, t_img *img);
+int		draw_line(t_object *obj, t_img *img);
 //matrix function
 // http://www.opengl-tutorial.org/fr/beginners-tutorials/tutorial-3-matrices/
 // http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-17-quaternions/#how-do-i-apply-a-rotation-to-a-point-
@@ -139,6 +162,7 @@ void ft_line(t_point *p1, t_point *p2, t_projection *proj, t_img *img);
 
 int	ft_draw(t_object *obj, t_projection *proj, t_img *img);
 t_mat4	get_model_mat(t_projection *proj);
+t_mat4	get_view_mat(t_projection *proj);
 t_mat4	get_rot_mat(t_vec3 *rot_vec);
 t_mat4	get_scale_mat(t_vec3 *scale_vec);
 t_mat4	get_trans_mat(t_vec3 *trans_vec);

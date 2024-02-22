@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:47 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 03:12:52 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/22 15:50:53 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ static t_fdf_err	load_point(char *str_point, t_point *point)
 		point->color = 0XFFFFFF;
 		return (nothing_append);
 	}
-	
+	point->color = 0XFFFFFF;
 	return (nothing_append);
 }

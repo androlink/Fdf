@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_projection_init.c                               :+:      :+:    :+:   */
+/*   ft_model_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 01:56:43 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/21 19:34:52 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/22 18:10:24 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "arr.h"
 
-int	ft_projection_init(t_projection *projection)
+int	ft_model_init(t_projection *projection)
 {
-	projection->rot_vec = ft_get_default_rot();
-	projection->trans_vec = ft_get_default_trans();
-	projection->scale_vec = ft_get_default_scale();
+	projection->rot_model = ft_get_default_rot();
+	projection->trans_model = ft_get_default_trans();
+	projection->scale_model = ft_get_default_scale();
 	projection->mat_proj = get_iso_proj();
 	return (1);
 }
@@ -26,19 +25,18 @@ t_vec3	ft_get_default_rot(void)
 {
 	t_vec3	rot;
 
-	rot.x = 0.523599;
-	rot.z = 0.523599;
-	rot.y = 0.785398;
+	rot.x = 3.6;
+	rot.y = -8.9;
+	rot.z = -2.4;
 	return (rot);
-	
 }
 
 t_vec3	ft_get_default_trans(void)
 {
 	t_vec3	trans;
 
-	trans.x = IMAGE_WIDTH / 2;
-	trans.y = IMAGE_HEIGHT / 2;
+	trans.x = 0;
+	trans.y = 0;
 	trans.z = 0;
 	return (trans);
 }
@@ -49,6 +47,6 @@ t_vec3	ft_get_default_scale(void)
 
 	scale.x = 10;
 	scale.y = 10;
-	scale.z = 5;
+	scale.z = 10;
 	return (scale);
 }
