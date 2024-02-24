@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:46:59 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/22 17:52:34 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/23 16:29:35 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_mat4	get_rot_mat(t_vec3 *rot_vec)
 	rot_mat.mat[2][0] = -sin(rot_vec->y);
 	rot_mat.mat[2][1] = cos(rot_vec->y) * sin(rot_vec->x);
 	rot_mat.mat[2][2] = cos(rot_vec->y) * cos(rot_vec->x);
-	rot_mat.mat[3][3] = 0;
+	rot_mat.mat[3][3] = 1;
 	return (rot_mat);
 }
 

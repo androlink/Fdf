@@ -86,7 +86,9 @@ FTPRINTFFILES	=	ft_printchar.c	\
 
 NUMDIR			=	num
 NUMFILES		=	ft_atoi.c		\
-					ft_atol.c
+					ft_atol.c		\
+					ft_abs.c		\
+					ft_min_max.c
 
 ARRDIR			=	arr
 ARRFILES		=	ft_arr_new.c		\

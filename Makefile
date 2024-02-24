@@ -51,7 +51,8 @@ SRCS_FILES += utils/ft_strtok.c
 SRCS_FILES += fdf/draw/ft_draw_utils.c
 SRCS_FILES += fdf/draw/draw.c
 SRCS_FILES += fdf/draw/paint.c
-SRCS_FILES += fdf/draw/ft_draw_line.c
+SRCS_FILES += fdf/draw/paint_bresenham.c
+SRCS_FILES += fdf/draw/paint_naive_line.c
 SRCS_FILES += fdf/loop.c
 #	matrix files
 SRCS_FILES += fdf/matrix/ft_matrix_calc.c

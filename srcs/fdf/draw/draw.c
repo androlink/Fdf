@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:32:53 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/23 00:28:00 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/23 22:03:19 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,15 @@ int	get_proj_points(t_object *obj, t_object *proj_obj, t_projection *proj)
 	}
 	return (1);
 }
-
-	//while (y < proj_obj.y)
-	//{
-	//	x = 0;
-	//	while (x < proj_obj.x)
-	//	{
-	//		if (y < proj_obj.y - 1)
-	//			ft_line(&proj_obj.points[y * proj_obj.x + x], &proj_obj.points[(y + 1) * proj_obj.x + x], proj, img);
-	//		if (x < proj_obj.x - 1)
-	//			ft_line(&proj_obj.points[y * proj_obj.x + x], &proj_obj.points[y * proj_obj.x + x + 1], proj, img);
-	//		x++;
-	//	}
-	//	y++;
-	//}
 	
-int	ft_draw(t_object *obj, t_projection *proj, t_img *img)
+int	ft_draw(t_object *obj, t_projection *proj, t_img *img, int draw_type)
 {
 	t_object	proj_obj;
 	
 	ft_bzero(img->addr,img->size_line * IMAGE_HEIGHT);
 	if (get_proj_points(obj, &proj_obj, proj) == 0)
 		return (0);
-	paint(&proj_obj, img, 1);
+	paint(&proj_obj, img, draw_type);
 	free(proj_obj.points);
 	return (1);
 }

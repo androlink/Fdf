@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:44:30 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/23 00:34:04 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/23 16:28:46 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ t_mat4	get_iso_proj()
 	ft_bzero(&mat, sizeof(t_mat4));
 	mat.mat[0][0] = 1. / IMAGE_WIDTH;
 	mat.mat[1][1] = 1. / IMAGE_HEIGHT;
-	mat.mat[2][2] = -2 / (far - near);
+	mat.mat[2][2] = -2. / (far - near);
 	mat.mat[2][3] = - (far + near) / (far - near);
-	mat.mat[3][3] = 1;
+	mat.mat[3][3] = 1.;
 	return (mat);
 }
 
@@ -43,7 +43,7 @@ t_mat4	get_pers_proj()
 	mat.mat[0][0] = ratio * fov_rad;
 	mat.mat[1][1] = fov_rad;
 	mat.mat[2][2] = -(far + near) / (far - near);
-	mat.mat[2][3] = -2 * (near * far) / (far - near);
+	mat.mat[2][3] = -2. * (near * far) / (far - near);
 	mat.mat[3][2] = -1.;
 	mat.mat[3][3] = 0.;
 	return (mat);

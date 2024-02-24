@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/22 18:15:38 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/24 02:29:05 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ typedef struct s_control
 	t_vec2	transX_view;
 	t_vec2	transY_view;
 	t_vec2	transZ_view;
+	t_vec2	rotY_view;
+	t_vec3	mouse;
 	t_vec2	scaleZ;
 }	t_control;
 
@@ -107,6 +109,7 @@ typedef struct s_fdf
 	t_object		object;
 	t_control		control;
 	int				draw_type;
+	t_vec2			pmouse;
 }	t_fdf;
 
 //fdf function
@@ -145,22 +148,26 @@ int			ft_key_handler(int key, void *param);
 int			key_pressed(int key, t_fdf *fdf);
 int			key_released(int key, t_fdf *fdf);
 void		switch_proj(int key, void *param);
-int			loop(void *fdf);
+int			loop(t_fdf *fdf);
 
 //draw function
 void	ft_refresh(t_fdf *fdf);
 void	paint_pixel(t_point *p, t_img *img);
-void	paint_line(t_point *p1, t_point *p2, t_img *img);
 int		paint(t_object *obj, t_img *img, int draw_type);
 int		draw_pixel(t_object *obj, t_img *img);
 int		draw_line(t_object *obj, t_img *img);
+void	draw_bresenham(t_object *obj, t_img *img);
+void	bresenham_line(t_point *p1, t_point *p2, t_img *img);
+void	paint_line(t_point *p1, t_point *p2, t_img *img);
+int		draw_naive(t_object *obj, t_img *img);
+
 //matrix function
 // http://www.opengl-tutorial.org/fr/beginners-tutorials/tutorial-3-matrices/
 // http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-17-quaternions/#how-do-i-apply-a-rotation-to-a-point-
 // https://automaticaddison.com/how-to-describe-the-rotation-of-a-robot-in-3d/
 //	http://www.opengl-tutorial.org/assets/faq_quaternions/index.html#Q11
 
-int	ft_draw(t_object *obj, t_projection *proj, t_img *img);
+int		ft_draw(t_object *obj, t_projection *proj, t_img *img, int draw_type);
 t_mat4	get_model_mat(t_projection *proj);
 t_mat4	get_view_mat(t_projection *proj);
 t_mat4	get_rot_mat(t_vec3 *rot_vec);

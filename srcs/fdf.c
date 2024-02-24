@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:10:09 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/22 11:21:06 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/23 22:05:32 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ int	main(int ac, char **av)
 		ft_fdf_exit(init_fail, &fdf);
 	fdf.files_to_load = av + 1;
 	ft_load_file(&fdf, av[1]);
-	ft_draw(&fdf.object, &fdf.projection, &fdf.window.img);
-	ft_refresh(&fdf);
 	mlx_loop_hook(fdf.window.mlx_ptr, loop,	&fdf);
 	mlx_loop(fdf.window.mlx_ptr);
 	ft_fdf_exit(nothing_append , &fdf);
