@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 00:47:57 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/20 03:11:55 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 22:39:01 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static t_fdf_err	to_obj(t_object *obj, t_vector *points);
 
 t_fdf_err	get_obj(t_object *obj, t_vector *points)
 {
-	t_fdf_err err;
-	
+	t_fdf_err	err;
+
 	err = check_dim(points);
 	if (err != nothing_append)
 		return (err);
@@ -38,7 +38,6 @@ static t_fdf_err	to_obj(t_object *obj, t_vector *points)
 	obj->y = points->size;
 	obj->x = ((t_vector *)points->data)[0].size;
 	obj->points = malloc(obj->x * obj->y * sizeof(t_point));
-	
 	if (obj->points == NULL)
 		return (look_errno);
 	j = 0;
@@ -47,7 +46,8 @@ static t_fdf_err	to_obj(t_object *obj, t_vector *points)
 		i = 0;
 		while (i < obj->x)
 		{
-			obj->points[j * obj->x + i] = ((t_point *)((t_vector *)points->data)[j].data)[i];
+			obj->points[j * obj->x + i] = ((t_point *)((t_vector *)
+						points->data)[j].data)[i];
 			i++;
 		}
 		j++;
@@ -70,8 +70,10 @@ static t_fdf_err	center_map(t_vector *points)
 		i = 0;
 		while (i < x)
 		{
-			((t_point *)((t_vector *)points->data)[j].data)[i].coord.x -= (x - 1.f) / 2.0f;
-			((t_point *)((t_vector *)points->data)[j].data)[i].coord.y -= (y - 1.f) / 2.0f;
+			((t_point *)((t_vector *)points->data)
+				[j].data)[i].coord.x -= (x - 1.f) / 2.0f;
+			((t_point *)((t_vector *)
+						points->data)[j].data)[i].coord.y -= (y - 1.f) / 2.0f;
 			i++;
 		}
 		j++;
@@ -84,7 +86,7 @@ static t_fdf_err	check_dim(t_vector *points)
 	size_t	y;
 	size_t	i;
 	size_t	x;
-	
+
 	y = points->size;
 	if (y == 0)
 		return (object_parsing);

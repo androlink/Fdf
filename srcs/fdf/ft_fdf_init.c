@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_init.c                                      :+:      :+:    :+:   */
+/*   fdf_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,13 +15,13 @@
 #include "stddef.h"
 #include <stdlib.h>
 
-int	ft_fdf_init(t_fdf *fdf)
+int	fdf_init(t_fdf *fdf)
 {
 	ft_bzero(fdf, sizeof(t_fdf));
-	ft_model_init(&fdf->projection);
+	model_init(&fdf->projection);
 	view_init(&fdf->projection);
 	if (!window_init(&fdf->window))
-		return(0);
+		return (0);
 	event_key(fdf);
 	return (1);
 }

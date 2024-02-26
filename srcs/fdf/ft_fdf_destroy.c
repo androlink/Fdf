@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_destroy.c                                   :+:      :+:    :+:   */
+/*   fdf_destroy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	ft_fdf_destroy(t_fdf *fdf)
+void	fdf_destroy(t_fdf *fdf)
 {
 	window_destroy(&fdf->window);
 	free(fdf->object.points);

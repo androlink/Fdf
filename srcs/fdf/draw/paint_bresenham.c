@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 23:16:58 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/24 03:08:35 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 23:06:31 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ void	bresenham_high(t_point *p1, t_point *p2, t_img *img)
 	dx = p2->coord.x - p1->coord.x;
 	xi = 1;
 	if (dy < 0)
-	{
 		xi = -1;
+	if (dy < 0)
 		dx = -dx;
-	}
 	d = (2. * dx) - dy;
 	p = (t_vec2){p1->coord.x, p1->coord.y};
 	while (p.y < p2->coord.y)
@@ -54,10 +53,9 @@ void	bresenham_low(t_point *p1, t_point *p2, t_img *img)
 	dy = p2->coord.y - p1->coord.y;
 	yi = 1;
 	if (dy < 0)
-	{
 		yi = -1;
+	if (dy < 0)
 		dy = -dy;
-	}
 	d = (2. * dy) - dx;
 	p = (t_vec2){p1->coord.x, p1->coord.y};
 	while (p.x < p2->coord.x)
@@ -84,7 +82,8 @@ void	bresenham_line(t_point *p1, t_point *p2, t_img *img)
 		else
 			bresenham_low(p1, p2, img);
 	}
-	else{
+	else
+	{
 		if (p1->coord.y > p2->coord.y)
 			bresenham_high(p2, p1, img);
 		else
@@ -109,8 +108,8 @@ void	draw_bresenham(t_object *obj, t_img *img)
 					img);
 			if (x < obj->x - 1)
 				bresenham_line(&obj->points[y * obj->x + x],
-				&obj->points[y * obj->x + x + 1],
-				img);
+					&obj->points[y * obj->x + x + 1],
+					img);
 			x++;
 		}
 		y++;

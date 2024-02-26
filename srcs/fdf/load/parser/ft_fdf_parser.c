@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 18:02:47 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/22 15:50:53 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 22:39:46 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_fdf_err	load_point(char *line, t_point *point);
 
 void	free_points(t_vector *points)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < points->size)
@@ -31,11 +31,11 @@ void	free_points(t_vector *points)
 	ft_vec_destroy(points);
 }
 
-t_fdf_err ft_fdf_parser(t_object *obj, t_array *map)
+t_fdf_err	ft_fdf_parser(t_object *obj, t_array *map)
 {
 	t_vector	points;
 	t_fdf_err	err;
-	
+
 	if (ft_vec_init(&points, sizeof(t_vector)) == 0)
 		return (look_errno);
 	err = load_map(&points, map);
@@ -98,7 +98,7 @@ static t_fdf_err	load_line(char *line, t_vector *points, size_t y)
 static t_fdf_err	load_point(char *str_point, t_point *point)
 {
 	char	*str_color;
-	
+
 	point->coord.z = ft_atoi(str_point);
 	str_color = ft_strchr(str_point, ',');
 	if (str_color == NULL)

@@ -1,11 +1,16 @@
 NAME = fdf
 
-CC = gcc
+CC = cc
 RMF = rm -f
 
 DEBUG_FLAGS := -g3
 CFLAGS := -Wall -Wextra -Werror
 DFLAGS = -MMD -MP
+AFLAGS :=
+
+ifdef mcheck
+	AFLAGS += -g3 -D 'malloc=my_malloc'
+endif
 
 ifdef debug
 	CFLAGS += -g3
@@ -78,12 +83,12 @@ include libft.mk
 -include $(DEPS)
 LIB_FLAGS += -lm
 
-$(NAME) : $(OBJS) $(LIB_PATH)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) -I $(HDIR)/ $(LIB_FLAGS)
+$(NAME) : $(OBJS) | $(LIB_PATH)
+	$(CC) $(CFLAGS) $(AFLAGS) -o $@ $(OBJS) -I $(HDIR)/ $(LIB_FLAGS)
 
 $(BDIR)/%.o		:	$(SDIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(DFLAGS) -c $< -o $@ -I $(HDIR)/ $(LIB_INCLUDE)
+	$(CC) $(CFLAGS) $(AFLAGS) $(DFLAGS) -c $< -o $@ -I $(HDIR)/ $(LIB_INCLUDE)
 
 clean	::
 	$(RMF) $(OBJS) $(DEPS)
@@ -96,4 +101,9 @@ fclean	::	clean
 
 force :
 
-.PHONY: clean re fclean force 
+malloc_check: $(OBJS) $(LIB_PATH)
+	$(CC) -c -g3 test/my_malloc.c 
+	$(CC) $(CFLAGS) $(AFLAGS) -o $@ $(OBJS) my_malloc.o -I $(HDIR)/ $(LIB_FLAGS)
+	-valgrind ./malloc_check maps/gcros/3x3.fdf
+
+.PHONY: clean re fclean force malloc_check

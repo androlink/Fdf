@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 01:07:18 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/14 03:50:07 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 22:36:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,3 @@ char	*ft_strtok(char *str, char *charset)
 	save++;
 	return (str);
 }
-
-
-//char	*ft_strtok(char *new_str, char *charset)
-//{
-//	static char	*str;
-	
-//	if (new_str != NULL)
-//		str = new_str;
-//	while (*str && ft_strchr(charset, *str) != NULL)
-//		str++;
-//	new_str = str;
-//	while (*str && ft_strchr(charset, *str) == NULL)
-//		str++;
-//	if (*str == '\0')
-//		str = NULL;
-//	else
-//	{
-//		*str = '\0';
-//		str++;
-//	}
-//	return (new_str);
-//}

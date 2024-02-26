@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:46:59 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/23 16:29:35 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 22:29:21 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ t_mat4	get_model_mat(t_projection *proj)
 	trans_mat = get_trans_mat(&proj->trans_model);
 	scale_mat = get_scale_mat(&proj->scale_model);
 	model_mat = get_ident_mat();
-	model_mat = ft_mat4_mul(scale_mat, model_mat);
-	model_mat = ft_mat4_mul(rot_mat, model_mat);
-	model_mat = ft_mat4_mul(trans_mat, model_mat);
+	model_mat = fdf_mat4_mul(scale_mat, model_mat);
+	model_mat = fdf_mat4_mul(rot_mat, model_mat);
+	model_mat = fdf_mat4_mul(trans_mat, model_mat);
 	return (model_mat);
 }

@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:20:35 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/23 22:05:49 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 23:13:46 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@ int	move(t_fdf *fdf)
 	int	x;
 	int	y;
 
-	if (fdf->control.rotX_model.x)
+	if (fdf->control.rot_x_model.x)
 		fdf->projection.rot_model.x += .1;
-	if (fdf->control.rotX_model.y)
+	if (fdf->control.rot_x_model.y)
 		fdf->projection.rot_model.x -= .1;
-	if (fdf->control.rotY_model.x)
+	if (fdf->control.rot_y_model.x)
 		fdf->projection.rot_model.y += .1;
-	if (fdf->control.rotY_model.y)
+	if (fdf->control.rot_y_model.y)
 		fdf->projection.rot_model.y -= .1;
-	if (fdf->control.rotZ_model.x)
+	if (fdf->control.rot_z_model.x)
 		fdf->projection.rot_model.z += .1;
-	if (fdf->control.rotZ_model.y)
+	if (fdf->control.rot_z_model.y)
 		fdf->projection.rot_model.z -= .1;
-	if (fdf->control.transZ_view.x)
+	if (fdf->control.trans_z_view.x)
 		fdf->projection.trans_view.z += 5.;
-	if (fdf->control.transZ_view.y)
+	if (fdf->control.trans_z_view.y)
 		fdf->projection.trans_view.z -= 5.;
-	if (fdf->control.rotY_view.x)
+	if (fdf->control.rot_y_view.x)
 		fdf->projection.rot_view.y += .1;
-	if (fdf->control.rotY_view.y)
+	if (fdf->control.rot_y_view.y)
 		fdf->projection.rot_view.y -= .1;
 	if (fdf->control.zoom_model.x)
 	{
@@ -65,20 +65,18 @@ int	move(t_fdf *fdf)
 
 int	loop(t_fdf *fdf)
 {
-	static size_t	i;
-	
-	t_img *img = &((t_fdf *)fdf)->window.img;
-	t_projection *proj = &((t_fdf *)fdf)->projection;
-	t_object *obj = &((t_fdf *)fdf)->object;
+	t_img			*img;
+	t_object		*obj;
+	t_projection	*proj;
+
+	img = &((t_fdf *)fdf)->window.img;
+	obj = &((t_fdf *)fdf)->object;
+	proj = &((t_fdf *)fdf)->projection;
 	move(fdf);
 	if (proj->trans_view.z > 0)
 		proj->trans_view.z = 0;
-	ft_draw(obj, proj, img, fdf->draw_type);
-	ft_refresh(fdf);
-	//if (i % 2)
-	//	((t_fdf *)fdf)->projection.rot_view.y += 0.015f;
-	//else
-	//	((t_fdf *)fdf)->projection.rot_view.y -= 0.015f;
-	i = (i + 1) % 2;
+	if (draw(obj, proj, img, fdf->draw_type) == 0)
+		mlx_loop_end(fdf->window.mlx_ptr);
+	refresh(fdf);
 	return (0);
 }

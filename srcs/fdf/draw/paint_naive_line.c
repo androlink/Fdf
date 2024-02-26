@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/24 02:27:15 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/24 02:47:40 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 23:07:34 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ void	naive_line(t_point *p1, t_point *p2, t_img *img)
 		else
 			naive_low(p1, p2, img);
 	}
-	else{
+	else
+	{
 		if (p1->coord.y > p2->coord.y)
 			naive_high(p2, p1, img);
 		else
 			naive_high(p1, p2, img);
 	}
 }
-
 
 int	draw_naive(t_object *obj, t_img *img)
 {
@@ -86,8 +86,8 @@ int	draw_naive(t_object *obj, t_img *img)
 					img);
 			if (x < obj->x - 1)
 				naive_line(&obj->points[y * obj->x + x],
-				&obj->points[y * obj->x + x + 1],
-				img);
+					&obj->points[y * obj->x + x + 1],
+					img);
 			x++;
 		}
 		y++;

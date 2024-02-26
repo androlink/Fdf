@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 18:01:53 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/23 18:39:00 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 23:08:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	view_init(t_projection *projection)
 {
-	
-	projection->trans_view.z = -10;
-
+	projection->trans_view.z = -100;
 	return (1);
 }

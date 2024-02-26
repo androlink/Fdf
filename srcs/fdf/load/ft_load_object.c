@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_load_object.c                                   :+:      :+:    :+:   */
+/*   load_object.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,14 +14,13 @@
 #include "str.h"
 #include "mlx.h"
 
-static t_fdf_err (*get_parser(char *ext))(t_object *, t_array *);
+static t_fdf_err(*get_parser(char *ext))(t_object *, t_array *);
 
-t_fdf_err	ft_load_object(t_object *obj, t_array *to_parse, char *ext)
+t_fdf_err	load_object(t_object *obj, t_array *to_parse, char *ext)
 {
-	t_fdf_err (*parser_func)(t_object *, t_array *);
 	t_fdf_err	err;
 
-
+	t_fdf_err (*parser_func)(t_object *, t_array *);
 	parser_func = get_parser(ext);
 	if (parser_func == NULL)
 	{
@@ -33,9 +32,8 @@ t_fdf_err	ft_load_object(t_object *obj, t_array *to_parse, char *ext)
 
 static t_fdf_err (*get_parser(char *ext))(t_object *, t_array *)
 {
-	if (ext == NULL)
-		return (NULL);
-	if (ft_strncmp(ext, ".fdf", 5) == 0)
-		return (&ft_fdf_parser);
-	return (NULL);
+if (ext != NULL)
+if (ft_strncmp(ext, ".fdf", 5) == 0)
+	return (&ft_fdf_parser);
+return (NULL);
 }

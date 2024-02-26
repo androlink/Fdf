@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:21:13 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/24 02:39:33 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/26 23:00:47 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	draw_pixel(t_object *obj, t_img *img)
 	i = 0;
 	while (i < obj->x * obj->y)
 	{
-		//printf("point %ld : %f, %f, %f\n", i, obj->points[i].coord.x, obj->points[i].coord.y, obj->points[i].coord.z);
 		if (obj->points[i].coord.z < 1)
 			paint_pixel(&obj->points[i], img);
 		i++;
@@ -57,8 +56,8 @@ int	draw_line(t_object *obj, t_img *img)
 					img);
 			if (x < obj->x - 1)
 				paint_line(&obj->points[y * obj->x + x],
-				&obj->points[y * obj->x + x + 1],
-				img);
+					&obj->points[y * obj->x + x + 1],
+					img);
 			x++;
 		}
 		y++;
