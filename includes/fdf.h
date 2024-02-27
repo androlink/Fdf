@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 22:57:24 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/27 23:37:00 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,13 +129,13 @@ void		window_destroy(t_window *win);
 //projection function
 int			model_init(t_projection *projection);
 int			view_init(t_projection *projection);
-t_vec3		ft_get_default_trans(void);
+t_vec3		get_default_trans(void);
 t_vec3		get_default_scale(void);
 t_vec3		get_default_rot(void);
 
 //load function
 int			load_file(t_fdf *fdf, char *file);
-t_fdf_err	ft_fdf_parser(t_object *obj, t_array *arr);
+t_fdf_err	fdf_parser(t_object *obj, t_array *arr);
 char		*ft_strtok(char *str, char *charset);
 
 //object function
@@ -144,7 +144,6 @@ t_fdf_err	get_obj(t_object *obj, t_vector *points);
 
 //event function
 void		event_key(t_fdf *fdf);
-int			ft_key_handler(int key, void *param);
 int			key_pressed(int key, t_fdf *fdf);
 int			key_released(int key, t_fdf *fdf);
 void		switch_proj(int key, void *param);
@@ -156,8 +155,6 @@ void		paint_pixel(t_point *p, t_img *img);
 int			paint(t_object *obj, t_img *img, int draw_type);
 int			draw_pixel(t_object *obj, t_img *img);
 int			draw_line(t_object *obj, t_img *img);
-void		draw_bresenham(t_object *obj, t_img *img);
-void		bresenham_line(t_point *p1, t_point *p2, t_img *img);
 void		paint_line(t_point *p1, t_point *p2, t_img *img);
 int			draw_naive(t_object *obj, t_img *img);
 

@@ -32,8 +32,7 @@ t_fdf_err	load_object(t_object *obj, t_array *to_parse, char *ext)
 
 static t_fdf_err (*get_parser(char *ext))(t_object *, t_array *)
 {
-if (ext != NULL)
-if (ft_strncmp(ext, ".fdf", 5) == 0)
-	return (&ft_fdf_parser);
+if (ext != NULL && ft_strncmp(ext, ".fdf", 5) == 0)
+	return (&fdf_parser);
 return (NULL);
 }

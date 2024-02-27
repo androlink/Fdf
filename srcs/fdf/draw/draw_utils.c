@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 19:21:13 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 23:00:47 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/27 02:31:52 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	paint(t_object *obj, t_img *img, int draw_type)
 		draw_naive(obj, img);
 	if (draw_type == 1)
 		draw_pixel(obj, img);
-	if (draw_type == 2)
-		draw_bresenham(obj, img);
 	return (1);
 }
 

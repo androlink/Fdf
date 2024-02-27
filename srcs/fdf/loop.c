@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:20:35 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 23:13:46 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/27 02:18:52 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	move(t_fdf *fdf)
 		fdf->projection.trans_view.z += 5.;
 	if (fdf->control.trans_z_view.y)
 		fdf->projection.trans_view.z -= 5.;
-	if (fdf->control.rot_y_view.x)
-		fdf->projection.rot_view.y += .1;
-	if (fdf->control.rot_y_view.y)
-		fdf->projection.rot_view.y -= .1;
+	if (fdf->control.trans_x_view.x)
+		fdf->projection.trans_view.x += 1;
+	if (fdf->control.trans_x_view.y)
+		fdf->projection.trans_view.x -= 1;
 	if (fdf->control.zoom_model.x)
 	{
 		fdf->projection.scale_model.x *= 1.1f;
@@ -55,9 +55,7 @@ int	move(t_fdf *fdf)
 	if (fdf->control.mouse.x)
 	{
 		fdf->projection.rot_view.y += (float)(x - fdf->pmouse.x) / 100.;
-		//printf("%d, %f, %f\n", x, fdf->pmouse.x, x - fdf->pmouse.x);
 		fdf->projection.rot_view.x += -(y - fdf->pmouse.y) / 100.;
-		//printf("d %f %f\n", x - fdf->pmouse.x, y - fdf->pmouse.y);
 	}
 	fdf->pmouse = (t_vec2){x, y};
 	return (1);

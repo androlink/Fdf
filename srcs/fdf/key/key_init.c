@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_key_init.c                                      :+:      :+:    :+:   */
+/*   key_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 00:59:05 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 22:57:24 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/27 23:39:55 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,13 @@ int	key_pressed(int key, t_fdf *fdf)
 	if (key == 107)
 		fdf->control.trans_z_view.y = 1;
 	if (key == 108)
-		fdf->control.rot_y_view.x = 1;
+		fdf->control.trans_x_view.x = 1;
 	if (key == 106)
-		fdf->control.rot_y_view.y = 1;
+		fdf->control.trans_x_view.y = 1;
 	if (key == 65438)
 		fdf->draw_type = 0;
 	if (key == 65436)
 		fdf->draw_type = 1;
-	if (key == 65433)
-		fdf->draw_type = 2;
 	return (1);
 }
 
@@ -82,9 +80,9 @@ int	key_released(int key, t_fdf *fdf)
 	if (key == 107)
 		fdf->control.trans_z_view.y = 0;
 	if (key == 108)
-		fdf->control.rot_y_view.x = 0;
+		fdf->control.trans_x_view.x = 0;
 	if (key == 106)
-		fdf->control.rot_y_view.y = 0;
+		fdf->control.trans_x_view.y = 0;
 	return (1);
 }
 

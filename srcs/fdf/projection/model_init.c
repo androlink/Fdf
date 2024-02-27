@@ -15,7 +15,7 @@
 int	model_init(t_projection *projection)
 {
 	projection->rot_model = get_default_rot();
-	projection->trans_model = ft_get_default_trans();
+	projection->trans_model = get_default_trans();
 	projection->scale_model = get_default_scale();
 	projection->mat_proj = get_iso_proj();
 	return (1);
@@ -31,7 +31,7 @@ t_vec3	get_default_rot(void)
 	return (rot);
 }
 
-t_vec3	ft_get_default_trans(void)
+t_vec3	get_default_trans(void)
 {
 	t_vec3	trans;
 
@@ -45,8 +45,8 @@ t_vec3	get_default_scale(void)
 {
 	t_vec3	scale;
 
-	scale.x = 10;
-	scale.y = 10;
+	scale.x = 20;
+	scale.y = 20;
 	scale.z = 10;
 	return (scale);
 }

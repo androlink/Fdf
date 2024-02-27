@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdf_parser.c                                    :+:      :+:    :+:   */
+/*   fdf_parser.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -31,7 +31,7 @@ void	free_points(t_vector *points)
 	ft_vec_destroy(points);
 }
 
-t_fdf_err	ft_fdf_parser(t_object *obj, t_array *map)
+t_fdf_err	fdf_parser(t_object *obj, t_array *map)
 {
 	t_vector	points;
 	t_fdf_err	err;
