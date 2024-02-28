@@ -6,7 +6,7 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:17:23 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/27 23:37:00 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/28 05:17:19 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,10 @@ typedef struct s_control
 	t_vec2	trans_y_view;
 	t_vec2	trans_z_view;
 	t_vec2	rot_y_view;
+	t_vec2	rot_x_view;
 	t_vec3	mouse;
 	t_vec2	scale_z;
+	int		_auto;
 }	t_control;
 
 typedef struct s_fdf
@@ -146,7 +148,6 @@ t_fdf_err	get_obj(t_object *obj, t_vector *points);
 void		event_key(t_fdf *fdf);
 int			key_pressed(int key, t_fdf *fdf);
 int			key_released(int key, t_fdf *fdf);
-void		switch_proj(int key, void *param);
 int			loop(t_fdf *fdf);
 
 //draw function
