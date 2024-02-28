@@ -12,7 +12,6 @@
 
 #include "fdf.h"
 #include "num.h"
-#include "ft_printf.h"
 
 static t_fdf_err	load_map(t_vector *points, t_array *map);
 static t_fdf_err	load_line(char *line, t_vector *points, size_t y);

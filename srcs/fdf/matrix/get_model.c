@@ -6,13 +6,12 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 22:46:59 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 22:29:21 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:11:50 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
-#include <stdio.h>
 
 t_mat4	get_rot_mat(t_vec3 *rot_vec)
 {

@@ -6,13 +6,12 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 22:44:30 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 23:11:45 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:35:29 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
-#include <stdio.h>
 
 t_mat4	get_iso_proj(void)
 {

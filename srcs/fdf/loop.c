@@ -6,13 +6,12 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:20:35 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/27 02:18:52 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:11:43 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
-#include <stdio.h>
 
 int	move(t_fdf *fdf)
 {

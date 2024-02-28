@@ -6,13 +6,12 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 00:59:05 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/27 23:39:55 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:11:26 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
-#include "put.h"
 #include "key.h"
 
 int	key_pressed(int key, t_fdf *fdf)

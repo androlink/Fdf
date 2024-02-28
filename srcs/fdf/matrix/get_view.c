@@ -6,13 +6,12 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 17:49:53 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 23:10:33 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:11:54 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
-#include <stdio.h>
 
 t_mat4	get_view_mat(t_projection *proj)
 {

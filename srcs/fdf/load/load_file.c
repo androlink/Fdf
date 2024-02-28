@@ -14,7 +14,6 @@
 #include "str.h"
 #include "fcntl.h"
 #include "get_next_line.h"
-#include "ft_printf.h"
 
 static int			check_ext(char *file);
 static void			error_catch(t_fdf *fdf, t_fdf_err err_code, t_array *arr);

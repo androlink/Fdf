@@ -6,14 +6,13 @@
 /*   By: gcros <gcros@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 01:10:09 by gcros             #+#    #+#             */
-/*   Updated: 2024/02/26 23:15:55 by gcros            ###   ########.fr       */
+/*   Updated: 2024/02/28 01:08:10 by gcros            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
 #include "fdf.h"
 #include <stdlib.h>
-#include "ft_printf.h"
 
 int	main(int ac, char **av)
 {
